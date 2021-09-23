@@ -56,14 +56,18 @@ public final class TimingModule extends NativeTimingSpec
   private final JavaTimerManager mJavaTimerManager;
 
   public TimingModule(ReactApplicationContext reactContext, DevSupportManager devSupportManager) {
-    super(reactContext);
+    this(reactContext, devSupportManager, true);
+  }
 
+  public TimingModule(ReactApplicationContext reactContext, DevSupportManager devSupportManager, boolean shouldScheduleOnMainThread) {
+    super(reactContext);
     mJavaTimerManager =
         new JavaTimerManager(
             reactContext,
             new BridgeTimerManager(),
-            ReactChoreographer.getInstance(),
-            devSupportManager);
+            shouldScheduleOnMainThread ? ReactChoreographer.getInstance() : new ReactChoreographer(false),
+            devSupportManager,
+            shouldScheduleOnMainThread);
   }
 
   @Override
