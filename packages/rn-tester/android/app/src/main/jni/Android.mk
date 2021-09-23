@@ -12,12 +12,13 @@ include $(REACT_COMMON_DIR)/react/nativemodule/samples/platform/android/Android.
 
 # start EvernoteTurboModule
 CONTEXT := evernote
-#$(warning $(CONTEXT) $(THIS_DIR)) 
 MODULE_NAME := EvernoteTurboModule
 MODULE_PATH := $(THIS_DIR)/modules/$(MODULE_NAME)/generated
 MODULE_JNI_PATH := $(MODULE_PATH)/jni
 include $(MODULE_PATH)/jni/Android.mk
 # end Evernote
+
+# Add new modules here
 
 LOCAL_PATH := $(THIS_DIR)
 
@@ -28,6 +29,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH) $(GENERATED_SRC_DIR)/codegen/jni $(MODULE_JNI_
 LOCAL_SRC_FILES := $(wildcard $(LOCAL_PATH)/*.cpp) $(wildcard $(GENERATED_SRC_DIR)/codegen/jni/*.cpp)
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) $(GENERATED_SRC_DIR)/codegen/jni
 LOCAL_SHARED_LIBRARIES := libfbjni libglog libfolly_json libyoga libreact_nativemodule_core libturbomodulejsijni librrc_view libreact_render_core libreact_render_graphics libreact_codegen_rncore 
+
+# Append new Modules here
 LOCAL_STATIC_LIBRARIES := libsampleturbomodule react_codegen_evernoteturbomodule
 LOCAL_CFLAGS := \
   -DLOG_TAG=\"ReactNative\"
