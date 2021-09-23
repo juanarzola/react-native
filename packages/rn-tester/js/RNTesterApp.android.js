@@ -9,9 +9,11 @@
  */
 
 import {AppRegistry} from 'react-native';
-
 import RNTesterApp from './RNTesterAppShared';
+import MessageQueue from 'react-native/Libraries/BatchedBridge/MessageQueue';
 
 AppRegistry.registerComponent('RNTesterApp', () => RNTesterApp);
+
+// Disable warning box on development mode
 
 module.exports = RNTesterApp;

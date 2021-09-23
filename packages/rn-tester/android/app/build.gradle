@@ -208,6 +208,8 @@ android {
             // SampleTurboModule.
             srcDirs += [
                 "$rootDir/ReactCommon/react/nativemodule/samples/platform/android",
+                "$rootDir/packages/rn-tester/android/app/src/main/jni/src",
+                "$rootDir/packages/rn-tester/android/app/src/main/jni/generated/java"
             ]
         }
     }

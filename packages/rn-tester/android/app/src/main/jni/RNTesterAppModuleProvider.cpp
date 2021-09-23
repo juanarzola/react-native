@@ -7,20 +7,31 @@
 
 #include "RNTesterAppModuleProvider.h"
 
+#include <EvernoteTurboModule.h>
 #include <PackagesRnTesterAndroidAppSpec.h>
 #include <ReactCommon/SampleTurboModuleSpec.h>
+#include <glog/logging.h>
 #include <rncore.h>
 
 namespace facebook {
 namespace react {
+std::shared_ptr<TurboModule> RNTesterAppModuleProvider(
+    const std::string moduleName,
+    const JavaTurboModule::InitParams &params) {
+  LOG(INFO) << "RNTesterAppModuleProvider " << moduleName;
 
-std::shared_ptr<TurboModule> RNTesterAppModuleProvider(const std::string moduleName, const JavaTurboModule::InitParams &params) {
-  auto module = PackagesRnTesterAndroidAppSpec_ModuleProvider(moduleName, params);
+  auto module =
+      PackagesRnTesterAndroidAppSpec_ModuleProvider(moduleName, params);
   if (module != nullptr) {
     return module;
   }
 
   module = SampleTurboModuleSpec_ModuleProvider(moduleName, params);
+  if (module != nullptr) {
+    return module;
+  }
+
+  module = EvernoteTurboModule_ModuleProvider(moduleName, params);
   if (module != nullptr) {
     return module;
   }

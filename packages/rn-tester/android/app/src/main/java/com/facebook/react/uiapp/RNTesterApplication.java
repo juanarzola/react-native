@@ -11,6 +11,7 @@ import android.app.Application;
 import android.content.Context;
 import androidx.annotation.Nullable;
 import com.facebook.fbreact.specs.SampleTurboModule;
+import com.evernote.turbomodules.EvernoteTurboModule;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -77,6 +78,10 @@ public class RNTesterApplication extends Application implements ReactApplication
                     return new SampleTurboModule(reactContext);
                   }
 
+                  if (EvernoteTurboModule.NAME.equals(name)) {
+                    return new EvernoteTurboModule(reactContext);
+                  }
+
                   return null;
                 }
 
@@ -93,6 +98,17 @@ public class RNTesterApplication extends Application implements ReactApplication
                             new ReactModuleInfo(
                                 SampleTurboModule.NAME,
                                 "SampleTurboModule",
+                                false, // canOverrideExistingModule
+                                false, // needsEagerInit
+                                true, // hasConstants
+                                false, // isCxxModule
+                                true // isTurboModule
+                                ));
+                        moduleInfos.put(
+                            EvernoteTurboModule.NAME,
+                            new ReactModuleInfo(
+                                EvernoteTurboModule.NAME,
+                                "EvernoteTurboModule",
                                 false, // canOverrideExistingModule
                                 false, // needsEagerInit
                                 true, // hasConstants

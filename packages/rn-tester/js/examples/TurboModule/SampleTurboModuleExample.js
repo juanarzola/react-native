@@ -20,6 +20,7 @@ import {
   RootTagContext,
 } from 'react-native';
 import * as React from 'react';
+import EvernoteTurboModule from './EvernoteTurboModule';
 
 type State = {|
   testResults: {
@@ -110,6 +111,9 @@ class SampleTurboModuleExample extends React.Component<{||}, State> {
         this._setResult(item, this._tests[item]()),
       );
     }
+
+    console.log(EvernoteTurboModule);
+    EvernoteTurboModule.getAnObject();
   }
 
   render(): React.Node {
