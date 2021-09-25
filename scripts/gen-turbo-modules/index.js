@@ -10,11 +10,10 @@ const rnTesterPath = `${rootPath}/packages/rn-tester`;
 const scriptsPath = `${rootPath}/scripts`;
 const templatesPath = `${scriptsPath}/gen-turbo-modules/templates`;
 const destPackagesPath = `${destPath}/turbomodules`;
+const modulesBase = `${rnTesterPath}/android/app/src/main/jni/modules`;
 
-exec(`mkdir ${destPackagesPath}`);
 rm('-rf', `${rootPath}/turbomodules`);
 
-const modulesBase = `${rnTesterPath}/android/app/src/main/jni/modules`;
 for (const turboModuleName of ls(modulesBase)){
   const packageName = _.kebabCase(turboModuleName);
   const packageRoot = `${destPackagesPath}/${packageName}`;
